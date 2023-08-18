@@ -1,13 +1,20 @@
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaGasPump } from "react-icons/fa";
 
 import { MdAirlineSeatReclineNormal } from "react-icons/md";
 import { PiSteeringWheelFill } from "react-icons/pi";
 function CarCard(props:any) {
-    const [car,setCar]=useState(props.car)
-  return (
+    const [car,setCar]=useState<any>();
+
+    useEffect(()=>{
+        if(props.car)
+        {
+            setCar(props.car)
+        }
+    },[props.car])
+  return car&&(
     <div 
     className='group bg-gray-50 p-2 sm:p-5 rounded-3xl m-1 sm:m-5
 hover:bg-white 
@@ -19,7 +26,7 @@ border-blue-500 '>
         {car.price}
         <span className='text-[12px] font-light'> /day</span></h2>
         <div className='flex justify-center'>
-    <Image src={car.image?.url}
+    <Image src={car?.image?.url}
         alt={car.name}
         width={220}
         height={200}
