@@ -36,6 +36,7 @@ function CarsFiltersOption({carsList,setBrand,orderCarList}:any) {
             select-bordered w-full md:block max-w-xs hidden"
             onChange={(e)=>setBrand(e.target.value)}>
             <option disabled selected>Manufactural</option>
+            <option value="all">all</option>
             {brandList&&brandList.map((brand:string,index:number)=>(
               <option key={index}>{brand}</option>
             ))}
